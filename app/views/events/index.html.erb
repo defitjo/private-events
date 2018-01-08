@@ -1,0 +1,18 @@
+<% provide(:title, "All Events") %>
+
+<h1>All Events</h1>
+
+<h2>Upcoming Events</h2>
+<% if Event.upcoming.any? %>
+  <% Event.upcoming.each do |event| %>
+    <% render 'event', :event => event %>
+  <% end %>
+<% end %>
+
+<h2>Previous Events</h2>
+<% if Event.past.any? %>
+    <% Event.past.each do |event| %>
+      <%= render 'event', :event => event %>
+    <% end %>
+  <!--/table> -->
+<% end %>

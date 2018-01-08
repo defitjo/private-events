@@ -1,0 +1,52 @@
+<% provide(:title, @user.name) %>
+<div class="row">
+  <div class="col-md-8">
+  	<h2>
+  	  You've posted
+  	  <%= pluralize(current_user.events.count, "event") %>
+  	  <%= @user.username %>	
+  	</h2>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+  	<h1>
+  	  My Events
+  	</h1>
+  	<% if @user.events.any? %>
+  	  <ul class="list">
+  	  	<%= render @events %>
+  	  </ul>
+  	  <%= will_paginate @events %>
+  	<% else %>
+  	  <h3>
+  	    No events found
+  	  </h3>
+  	<% end %>
+  </div>
+
+  <div class="col-md-6">
+  	<% if @user.attended_events.any? %>
+  	  <h2>
+  	  	Upcoming events
+  	  </h2>
+  	  <ul class="list">
+  	  	<%= render @Upcoming_events %>
+  	  </ul>
+  	<% else %>
+  	  <h2>
+  	  	No upcoming events
+  	  </h2>
+  	<% end %>
+
+  	<h2>
+  	  Past events
+  	</h2>
+  	<% if @events.past.any? %>
+  	  <ul class="list">
+  	  	<%= render @events.past %>
+  	  </ul>
+  	<% end %>
+  </div>
+</div>
