@@ -2,7 +2,7 @@
 <div class="row">
   <div class="col-md-8">
   	<h2>
-  	  You've posted
+  	  Posts
   	  <%= pluralize(current_user.events.count, "event") %>
   	  <%= @user.username %>	
   	</h2>
@@ -18,10 +18,9 @@
   	  <ul class="list">
   	  	<%= render @events %>
   	  </ul>
-  	  <%= will_paginate @events %>
   	<% else %>
   	  <h3>
-  	    No events found
+  	    No events available
   	  </h3>
   	<% end %>
   </div>
@@ -32,7 +31,7 @@
   	  	Upcoming events
   	  </h2>
   	  <ul class="list">
-  	  	<%= render @Upcoming_events %>
+  	  	<%= render @upcoming_events %>
   	  </ul>
   	<% else %>
   	  <h2>
@@ -41,7 +40,7 @@
   	<% end %>
 
   	<h2>
-  	  Past events
+  	  Previous events
   	</h2>
   	<% if @events.past.any? %>
   	  <ul class="list">
