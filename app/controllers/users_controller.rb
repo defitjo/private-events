@@ -7,7 +7,9 @@ class UsersController < ApplicationController
   def create
   	@user = User.new(user_params)
   	if @user.save
+      RegisterMailer.welcome_email(@user).deliver_now
   	  redirect_to root_url
+      flash[:success] = 'Registration complete'
   	else
   	  render 'new'
   	end
